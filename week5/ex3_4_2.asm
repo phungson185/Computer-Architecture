@@ -1,7 +1,6 @@
-# Tinh gia tri bieu thuc 5x + 3y + z
 
 .data 
-	str0: .asciiz "\nTinh gia tri bieu thuc 5x + 3y + z"
+	str0: .asciiz "\nTinh gia tri bieu thuc ((5x + 3y + z)/2)*3"
 	str1: .asciiz "\nNhap vao gia tri x: "
 	str2: .asciiz "\nNhap vao gia tri y: "
 	str3: .asciiz "\nNhap vao gia tri z: "
@@ -9,8 +8,7 @@
 .text
 .globl main
 main:
-
-	# Tinh gia tri bieu thuc 5x + 3y + z
+	# Tinh gia tri bieu thuc ((5x + 3y + z)/2)*3
 	addi $v0, $zero, 4
 	la $a0, str0
 	syscall
@@ -39,13 +37,14 @@ main:
 	syscall
 	move $s2, $v0
 	
-	# Tinh gia tri bieu thuc 5x + 3y + z
+	# Tinh gia tri bieu thuc ((5x + 3y + z)/2)*3
 	
 	mul $t0, $s0, 5
 	mul $t1, $s1, 3
 	add $t0, $t0, $t1
 	add $t0, $t0, $s2
-	
+	div $t0, $t0, 2
+	mul $t0, $t0, 3
 	# In ra man hinh
 	
 	addi $v0, $zero, 4
@@ -58,5 +57,3 @@ main:
 	# Thoat chuong trinh
 	addi $v0, $zero, 10
 	syscall
-	
-	

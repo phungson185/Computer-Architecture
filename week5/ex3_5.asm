@@ -1,21 +1,21 @@
-# Tinh gia tri bieu thuc 5x + 3y + z
-
+# Tinh V = nRT / P
+# R = 8314/1000
 .data 
-	str0: .asciiz "\nTinh gia tri bieu thuc 5x + 3y + z"
-	str1: .asciiz "\nNhap vao gia tri x: "
-	str2: .asciiz "\nNhap vao gia tri y: "
-	str3: .asciiz "\nNhap vao gia tri z: "
+	str0: .asciiz "\nTinh V = nRT / P"
+	str1: .asciiz "\nNhap vao gia tri n: "
+	str2: .asciiz "\nNhap vao gia tri P: "
+	str3: .asciiz "\nNhap vao gia tri T: "
 	str4: .asciiz "\nKet qua la: "
 .text
 .globl main
 main:
 
-	# Tinh gia tri bieu thuc 5x + 3y + z
+	# Tinh V = nRT / P
 	addi $v0, $zero, 4
 	la $a0, str0
 	syscall
 
-	# Nhap vao gia tri x
+	# Nhap vao gia tri n
 	addi $v0, $zero, 4
 	la $a0, str1
 	syscall
@@ -23,7 +23,7 @@ main:
 	syscall
 	move $s0, $v0
 	
-	# Nhap vao gia tri y
+	# Nhap vao gia tri P
 	addi $v0, $zero, 4
 	la $a0, str2
 	syscall
@@ -31,7 +31,7 @@ main:
 	syscall
 	move $s1, $v0
 	
-	# Nhap vao gia tri z
+	# Nhap vao gia tri T
 	addi $v0, $zero, 4
 	la $a0, str3
 	syscall
@@ -39,12 +39,14 @@ main:
 	syscall
 	move $s2, $v0
 	
-	# Tinh gia tri bieu thuc 5x + 3y + z
+	# Tinh V = nRT / P
 	
-	mul $t0, $s0, 5
-	mul $t1, $s1, 3
-	add $t0, $t0, $t1
-	add $t0, $t0, $s2
+	li $s3, 8314
+	li $s4, 1000
+	divu $s5, $s3, $s4 
+	mul $t0, $s5, $s0
+	mul $t0, $t0, $s2
+	divu $t0, $t0, $s1
 	
 	# In ra man hinh
 	
