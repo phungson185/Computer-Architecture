@@ -1,0 +1,10 @@
+Lỗi vòng lặp vô hạn do:
+
+- Trước khi thực hiện lệnh "jal PrintNewLine", thanh ghi $ra lưu địa chỉ của câu lệnh tiếp theo đó là "jr $ra".
+- Sau khi kết thúc PrintNewLine, thực hiện lệnh "jr $ra". Mà trong thanh ghi $ra đang lưu địa chỉ của "jr $ra".
+Do đó vòng lặp luôn dừng tại câu lệnh "jr $ra" mà không thoát ra được
+
+Giải pháp: 
+
+- Không thực hiện chương trình con trong chương trình con
+- Có thể gọi PrintNewLine sau khi thực hiện PrintInt

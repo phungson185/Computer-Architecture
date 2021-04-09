@@ -1,0 +1,5 @@
+Giải thích lỗi :
+- Do người dùng khi viết chương trình con không khai báo vùng ".text" nên thanh ghi $ra không thể lưu địa chỉ của "jal PrintTab".
+
+Giải pháp: 
+- Thêm khai báo vùng ".text" vào trước chương trình con.
