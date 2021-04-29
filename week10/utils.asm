@@ -235,7 +235,7 @@ PrintInt:
 	#return 
 	jr $ra
 	
-	
+.text
 PromptInt:
 	# Print the prompt, which is already in $a0
 	li $v0, 4
